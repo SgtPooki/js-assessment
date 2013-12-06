@@ -21,7 +21,16 @@ define(function() {
     },
 
     multiply: function(a, b) {
-
+        //get number of decimals for a
+        var getPrec = function(n) { 
+            if (n == parseInt(n)) return 0;
+            
+            return n.toString(10).split('.')[1].length; 
+        }
+        var aPrec = getPrec(a);
+        var bPrec = getPrec(b);
+        
+        return parseFloat((a * b).toFixed(aPrec+bPrec));
     }
   };
 });
